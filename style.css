@@ -1,0 +1,213 @@
+:root {
+    --gold: #d4af37;
+    --gold-gradient: linear-gradient(90deg, #8a6d3b, #d4af37, #fcf6ba);
+    --glass: rgba(15, 15, 15, 0.7);
+}
+
+body {
+    margin: 0;
+    background: #000;
+    color: #e0e0e0;
+    font-family: 'Times New Roman', serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+#bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    filter: blur(40px) brightness(0.4);
+    transition: background 1s ease-in-out;
+}
+
+#visualizer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.main-wrapper {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 30px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+    width: 450px;
+}
+
+.library-modal {
+    position: fixed;
+    top: 0;
+    left: -350px;
+    width: 320px;
+    height: 100%;
+    background: rgba(10, 10, 10, 0.95);
+    z-index: 1000;
+    transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 30px;
+    border-left: none; 
+    box-shadow: 10px 0 30px rgba(0,0,0,0.5);
+}
+
+.library-modal.active {
+    left: 0;
+}
+
+.simple-btn {
+    position: fixed;
+    top: 25px;
+    left: 25px;
+    z-index: 100;
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.vinyl-record {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 4px solid var(--gold);
+    margin: 0 auto 25px;
+    overflow: hidden;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
+    transition: transform 0.3s ease;
+}
+
+.vinyl-record img { width: 100%; height: 100%; object-fit: cover; }
+.playing img { animation: rotate 12s linear infinite; }
+
+.progress-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 25px 0 15px 0;
+    width: 100%;
+}
+
+.progress-container {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05); /* Black part ko light/transparent kiya */
+    height: 6px;
+    cursor: pointer;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress {
+    background: var(--gold-gradient);
+    height: 100%;
+    width: 0%;
+    border-radius: 10px;
+}
+
+#currTime, #durTime {
+    font-size: 0.9rem;
+    color: var(--gold);
+    min-width: 40px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.play-btn {
+    background: var(--gold);
+    color: #000;
+    font-size: 1.4rem;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    transition: transform 0.2s;
+}
+
+.ctrl-btn {
+    font-size: 1.3rem;
+    color: var(--gold);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.lib-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+#playlist {
+    list-style: none;
+    padding: 0;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+#playlist li {
+    padding: 15px;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    transition: 0.3s;
+}
+
+#playlist li.active { color: var(--gold); font-weight: bold; }
+
+@keyframes rotate { from {transform: rotate(0deg);} to {transform: rotate(360deg);} }
+
+.library-container {
+    border-right: none !important; 
+    padding-right: 0 !important;
+}
+
+.progress-container {
+    background: rgba(255, 255, 255, 0.066) !important; 
+    box-shadow: none !important;
+}
+
+.main-wrapper {
+    gap: 0 !important; 
+} 

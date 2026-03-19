@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Classical Phonograph</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js"></script>
+</head>
+<body>
+    <div id="bg-overlay"></div>
+    <canvas id="visualizer"></canvas>
+
+    <button id="toggle-lib-btn" class="simple-btn">Library ☰</button>
+
+    <div class="main-wrapper">
+        <div class="player-container">
+            <div class="vinyl-record" id="vinyl">
+                <img src="https://cdn-icons-png.flaticon.com/512/461/461238.png" alt="Album Art" id="cover">
+            </div>
+            
+            <div class="info">
+                <h2 id="title">Select a Song</h2>
+                <p id="artist">Classical Collection</p>
+            </div>
+
+            <audio id="audio" crossorigin="anonymous"></audio>
+
+            <div class="progress-box">
+               <span id="currTime">0:00</span> 
+                <div class="progress-container" id="progress-container">
+                  <div class="progress" id="progress"></div>
+                </div>
+               <span id="durTime">0:00</span>
+            </div>
+
+            <div class="controls">
+                <button id="prev" class="ctrl-btn">«</button>
+                <button id="backward" class="ctrl-btn">⟲</button> 
+                <button id="play" class="play-btn">▶</button>
+                <button id="forward" class="ctrl-btn">⟳</button>
+                <button id="next" class="ctrl-btn">»</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="library-modal" id="library-window">
+        <div class="lib-content">
+            <div class="lib-header">
+                <h2>Music Library</h2>
+                <button id="close-lib" class="close-btn">×</button>
+            </div>
+            <div class="upload-section">
+                <input type="file" id="file-upload" accept="audio/*" hidden>
+                <button onclick="document.getElementById('file-upload').click()" class="upload-btn">+ Add Song</button>
+            </div>
+            <ul id="playlist">
+                </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
